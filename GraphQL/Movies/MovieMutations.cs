@@ -27,7 +27,6 @@ namespace mhyphen.GraphQL.Movies
                 Title = input.Title,
                 Plot = input.Plot,
                 ImageURL = input.ImageURL,
-                Year = (Year)Enum.Parse(typeof(Year), input.Year),
                 Rating = input.Rating,
                 Genre = input.Genre,
                 Runtime = input.Runtime
