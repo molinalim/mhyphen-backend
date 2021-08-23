@@ -6,7 +6,6 @@ namespace mhyphen.GraphQL.Movies
         string Title,
         string Plot,
         string ImageURL,
-        string Year,
         double Rating,
         string Genre,
         int Runtime);
