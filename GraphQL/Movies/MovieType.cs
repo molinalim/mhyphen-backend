@@ -20,7 +20,6 @@ namespace mhyphen.GraphQL.Movies
             descriptor.Field(p => p.Title).Type<NonNullType<StringType>>();
             descriptor.Field(p => p.Plot).Type<NonNullType<StringType>>();
             descriptor.Field(p => p.ImageURL).Type<NonNullType<StringType>>();
-            descriptor.Field(p => p.Year).Type<NonNullType<EnumType<Year>>>();
 
             descriptor
                 .Field(p => p.Bookings)
