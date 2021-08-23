@@ -21,12 +21,12 @@ namespace mhyphen.GraphQL.Bookings
         public async Task<Booking> AddBookingAsync(AddBookingInput input, ClaimsPrincipal claimsPrincipal,
         [ScopedService] AppDbContext context, CancellationToken cancellationToken)
         {
-            var userIdStr = claimsPrincipal.Claims.First(b => b.Type == "userId").Value;
+            //var userIdStr = claimsPrincipal.Claims.First(b => b.Type == "userId").Value;
             var booking = new Booking
             {
                 Price = 80.00,
                 MovieId = int.Parse(input.MovieId),
-                UserId = int.Parse(userIdStr),
+                UserId = int.Parse(input.UserId),
                 Booked = DateTime.Now,
                 Created = DateTime.Now,
                 Theater = input.Theater
