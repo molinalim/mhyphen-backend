@@ -1,6 +1,9 @@
-﻿namespace mhyphen.GraphQL.Bookings
+﻿using HotChocolate.Types;
+
+namespace mhyphen.GraphQL.Bookings
 {
     public record EditBookingInput(
+        [HotChocolate.GraphQLType(typeof(NonNullType<IdType>))]
         string BookingId,
-        double? Price);
+        string? MovieId);
 }

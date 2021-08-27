@@ -19,7 +19,7 @@ namespace mhyphen.Models
         [Required]
         public int MovieId { get; set; }
 
-        public Movie Movie { get; set; } = null!;
+        public Movie Movie { get; set; } = default!;
 
         [Required]
         public double Price { get; set; }
@@ -27,7 +27,7 @@ namespace mhyphen.Models
         [Required]
         public int UserId { get; set; }
 
-        public User User { get; set; } = null!;
+        public User User { get; set; } = default!;
 
         public DateTime Booked { get; set; }
 

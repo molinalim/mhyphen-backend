@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace mhyphen.Migrations
 {
-    public partial class initial : Migration
+    public partial class UpdateUser : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -14,7 +14,8 @@ namespace mhyphen.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Password = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    GitHub = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ImageURI = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -32,7 +33,6 @@ namespace mhyphen.Migrations
                     Rating = table.Column<double>(type: "float", nullable: false),
                     Genre = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ImageURL = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Year = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Runtime = table.Column<int>(type: "int", nullable: false),
                     UserId = table.Column<int>(type: "int", nullable: true)
                 },

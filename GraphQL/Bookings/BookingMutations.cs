@@ -21,12 +21,12 @@ namespace mhyphen.GraphQL.Bookings
         public async Task<Booking> AddBookingAsync(AddBookingInput input, ClaimsPrincipal claimsPrincipal,
         [ScopedService] AppDbContext context, CancellationToken cancellationToken)
         {
-            //var userIdStr = claimsPrincipal.Claims.First(b => b.Type == "userId").Value;
+            var userIdStr = claimsPrincipal.Claims.First(b => b.Type == "userId").Value;
             var booking = new Booking
             {
                 Price = 80.00,
                 MovieId = int.Parse(input.MovieId),
-                UserId = int.Parse(input.UserId),
+                UserId = int.Parse(userIdStr),
                 Booked = DateTime.Now,
                 Created = DateTime.Now,
                 Theater = input.Theater
@@ -53,9 +53,10 @@ namespace mhyphen.GraphQL.Bookings
                     .SetCode("AUTH_NOT_AUTHORIZED")
                     .Build());
             }
-
-            booking.Price = input.Price ?? booking.Price;
-
+            if (input.MovieId != null) {
+                booking.MovieId = int.Parse((input.MovieId) ?? (booking.MovieId).ToString());
+            }
+            
             await context.SaveChangesAsync(cancellationToken);
 
             return booking;

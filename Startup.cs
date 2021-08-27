@@ -8,6 +8,9 @@ using mhyphen.Data;
 using mhyphen.GraphQL.Bookings;
 using mhyphen.GraphQL.Movies;
 using mhyphen.GraphQL.Users;
+using Microsoft.IdentityModel.Tokens;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using System.Text;
 
 namespace mhyphen
 {
@@ -18,12 +21,36 @@ namespace mhyphen
             Configuration = configuration;
         }
 
-        public IConfiguration Configuration { get; }
+        public static IConfiguration Configuration { get; private set; } = default!;
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddPooledDbContextFactory<AppDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddCors(o => o.AddPolicy("MyPolicy", builder =>
+            {
+                builder.AllowAnyOrigin()
+                    .AllowAnyMethod()
+                    .AllowAnyHeader();
+            }));
+
+
+            var signingKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["JWT:Secret"]));
+
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                .AddJwtBearer(options =>
+                {
+                    options.TokenValidationParameters =
+                        new TokenValidationParameters
+                        {
+                            ValidIssuer = "mhyphen",
+                            ValidAudience = "mhyphen-user",
+                            ValidateIssuerSigningKey = true,
+                            IssuerSigningKey = signingKey
+                        };
+                });
+
+            services.AddAuthorization();
 
             services
                 .AddGraphQLServer()
@@ -50,6 +77,10 @@ namespace mhyphen
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseCors("MyPolicy");
+
+            app.UseAuthentication();
 
             app.UseEndpoints(endpoints =>
             {

@@ -7,9 +7,9 @@ namespace mhyphen.Data
     {
         public AppDbContext(DbContextOptions options) : base(options) { }
 
-        public DbSet<Movie> Movies { get; set; }
-        public DbSet<Booking> Bookings { get; set; }
-        public DbSet<User> Users { get; set; }
+        public DbSet<Movie> Movies { get; set; } = default!;
+        public DbSet<Booking> Bookings { get; set; } = default!;
+        public DbSet<User> Users { get; set; } = default!;
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

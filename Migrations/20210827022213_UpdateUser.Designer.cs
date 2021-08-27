@@ -10,8 +10,8 @@ using mhyphen.Data;
 namespace mhyphen.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20210822081930_initial1")]
-    partial class initial1
+    [Migration("20210827022213_UpdateUser")]
+    partial class UpdateUser
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -87,10 +87,6 @@ namespace mhyphen.Migrations
                     b.Property<int?>("UserId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("Year")
-                        .IsRequired()
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
                     b.HasIndex("UserId");
@@ -105,11 +101,15 @@ namespace mhyphen.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Name")
+                    b.Property<string>("GitHub")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Password")
+                    b.Property<string>("ImageURI")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
