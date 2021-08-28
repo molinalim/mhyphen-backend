@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace mhyphen.Models
@@ -12,9 +12,6 @@ namespace mhyphen.Models
     {
         [Key]
         public int Id { get; set; }
-
-        [Required]
-        public Theater Theater { get; set; }
 
         [Required]
         public int MovieId { get; set; }
