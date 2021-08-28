@@ -8,6 +8,6 @@ namespace mhyphen.GraphQL.Bookings
     public record AddBookingInput(
         [GraphQLType(typeof(NonNullType<IdType>))]
         string MovieId,
-        Theater Theater
+        DateTime Booked
         );
 }

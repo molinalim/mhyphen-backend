@@ -24,12 +24,11 @@ namespace mhyphen.GraphQL.Bookings
             var userIdStr = claimsPrincipal.Claims.First(b => b.Type == "userId").Value;
             var booking = new Booking
             {
-                Price = 80.00,
+                Price = 25.00,
                 MovieId = int.Parse(input.MovieId),
                 UserId = int.Parse(userIdStr),
-                Booked = DateTime.Now,
-                Created = DateTime.Now,
-                Theater = input.Theater
+                Booked = input.Booked,
+                Created = DateTime.Now
             };
             context.Bookings.Add(booking);
 
