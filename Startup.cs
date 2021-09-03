@@ -57,6 +57,7 @@ namespace mhyphen
                 .AddQueryType(d => d.Name("Query"))
                     .AddTypeExtension<MovieQueries>()
                     .AddTypeExtension<UserQueries>()
+                    .AddTypeExtension<BookingQueries>()
                 .AddMutationType(d => d.Name("Mutation"))
                     .AddTypeExtension<UserMutations>()
                     .AddTypeExtension<MovieMutations>()
