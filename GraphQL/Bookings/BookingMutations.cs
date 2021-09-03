@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -24,7 +24,7 @@ namespace mhyphen.GraphQL.Bookings
             var userIdStr = claimsPrincipal.Claims.First(b => b.Type == "userId").Value;
             var booking = new Booking
             {
-                Price = 25.00,
+                Price = 15.00,
                 MovieId = int.Parse(input.MovieId),
                 UserId = int.Parse(userIdStr),
                 Booked = input.Booked,
