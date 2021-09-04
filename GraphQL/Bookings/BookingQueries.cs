@@ -24,7 +24,6 @@ namespace mhyphen.GraphQL.Bookings
         }
 
         [UseAppDbContext]
-        [UsePaging]
         public IQueryable<Booking> GetBookingsByUserId(int userId, [ScopedService] AppDbContext context)
         {
             return context.Bookings.Where(b => b.UserId == userId).OrderBy(c => c.Created); 

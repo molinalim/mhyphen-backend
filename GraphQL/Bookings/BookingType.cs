@@ -5,6 +5,7 @@ using HotChocolate.Types;
 using mhyphen.Data;
 using mhyphen.Models;
 using mhyphen.GraphQL.Movies;
+using mhyphen.GraphQL.Users;
 
 namespace mhyphen.GraphQL.Bookings
 {
