@@ -19,13 +19,13 @@ namespace mhyphen.GraphQL.Bookings
                 .Field(b => b.Movie)
                 .ResolveWith<Resolvers>(r => r.GetMovie(default!, default!, default))
                 .UseDbContext<AppDbContext>()
-                .Type<NonNullType<BookingType>>();
+                .Type<NonNullType<MovieType>>();
 
             descriptor
                 .Field(b => b.User)
                 .ResolveWith<Resolvers>(r => r.GetUser(default!, default!, default))
                 .UseDbContext<AppDbContext>()
-                .Type<NonNullType<BookingType>>();
+                .Type<NonNullType<UserType>>();
 
             descriptor.Field(p => p.Booked).Type<NonNullType<DateTimeType>>();
             descriptor.Field(p => p.Created).Type<NonNullType<DateTimeType>>();
